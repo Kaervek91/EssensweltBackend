@@ -1,29 +1,11 @@
-const aedes = require('aedes')()
-const server = require('net').createServer(aedes.handle)
-const port = 1883
-const express = require("express");
-const mqtt = require('mqtt')
-const app = express();
-
-app.get("/", function (req, res) {
-  res.sendFile(__dirname + "/index.html");
-});
-
-app.listen(3000, function () {
-  console.log("Server is running on localhost 3000");
-});
-
-server.listen(port, function () {
-  console.log('server started and listening on port ', port)
-})
-
-//const client  = mqtt.connect('mqtt://127.0.0.1')
-
+const aedes = require('aedes')();
+const MQTTServer = require('net').createServer(aedes.handle);
+const MQTTport = 1883;
 // emitted when a client connects to the broker
 aedes.on('client', function (client) {
-  console.log(`[CLIENT_CONNECTED] Client ${(client ? client.id : client)} connected to broker ${aedes.id}`)
-})
-
+    console.log(`[CLIENT_CONNECTED] Client ${(client ? client.id : client)} connected to broker ${aedes.id}`)
+  })
+  
 // emitted when a client disconnects from the broker
 aedes.on('clientDisconnect', function (client) {
   console.log(`[CLIENT_DISCONNECTED] Client ${(client ? client.id : client)} disconnected from the broker ${aedes.id}`)
@@ -43,20 +25,13 @@ aedes.on('unsubscribe', function (subscriptions, client) {
 aedes.on('publish', async function (packet, client) {
   if (client) {
       console.log(`[MESSAGE_PUBLISHED] Client ${(client ? client.id : 'BROKER_' + aedes.id)} has published message on ${packet.topic} to broker ${aedes.id}`)
+      console.log(`TOPIC ${packet.topic} and ${packet.payload}`);
+      
   }
 })
 
-
-/*client.on('connect', function () {
-  client.subscribe('hello', function (err) {
-    if (!err) {
-      client.publish('hello', 'Suscrito')
-    }
-  })
+MQTTServer.listen(MQTTport, function () {
+  console.log('MQTT Server is running on ', MQTTport)
 })
 
-client.on('message', function (topic, message) {
-  // message is Buffer
-  console.log(message.toString())
-  client.end()
-})*/
+module.exports = MQTTServer;

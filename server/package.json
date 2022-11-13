@@ -2,8 +2,9 @@
   "name": "essenswelt_cloud",
   "version": "1.0.0",
   "description": "Essenswelt Cloud application that handles the server and user interface",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Hugo Mallo Alonso",
@@ -11,7 +12,10 @@
   "dependencies": {
     "aedes": "^0.48.0",
     "express": "^4.18.2",
+    "mongodb": "^4.11.0",
+    "mongoose": "^6.7.2",
     "mqtt": "^4.3.7",
-    "net": "^1.0.2"
+    "net": "^1.0.2",
+    "nodemon": "^2.0.20"
   }
 }
