@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const DeviceSchema = new Schema({
+const MQTTDeviceSchema = new Schema({
     type: String,
     description: String,
     value: Number
 });
 
-module.exports = mongoose.model('Device', DeviceSchema);
+module.exports = mongoose.model('MQTTDevice', MQTTDeviceSchema);
