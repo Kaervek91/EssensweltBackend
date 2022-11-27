@@ -1,0 +1,27 @@
+{
+  "name": "simulationserver",
+  "version": "1.0.0",
+  "description": "Simulation Setup for MQTT communications",
+  "main": "simulationserver.js",
+  "scripts": {
+    "start": "node simulationserver.js",
+    "dev": "nodemon simulationserver.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "aedes": "^0.48.0",
+    "body-parser": "^1.20.1",
+    "date-and-time": "^2.4.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "got": "^11.8.3",
+    "mongodb": "^4.11.0",
+    "mongoose": "^6.7.2",
+    "mqtt": "^4.3.7",
+    "net": "^1.0.2",
+    "node-schedule": "^2.1.0",
+    "nodemon": "^2.0.20"
+  },
+  "author": "Hugo Mallo Alonso",
+  "license": "ISC"
+}
